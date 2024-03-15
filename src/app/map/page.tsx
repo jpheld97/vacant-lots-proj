@@ -10,10 +10,10 @@ import {
   SidePanel,
   SidePanelControlBar,
   FilterView,
-} from "../components";
-import Hotjar from "../components/Hotjar";
+} from "../../components";
+import Hotjar from "../../components/Hotjar";
 import { MapboxGeoJSONFeature } from "mapbox-gl";
-import StreetView from "../components/StreetView";
+import StreetView from "../../components/StreetView";
 import { Coordinates } from "../types";
 import { X } from "@phosphor-icons/react";
 
@@ -36,7 +36,7 @@ const Page: FC = () => {
   return (
     <FilterProvider>
       <NextUIProvider>
-      <title>Map - Clean and Green Philly</title>
+        <title>Map - Clean and Green Philly</title>
         <div className="flex flex-col h-screen">
           <a
             className="font-bold border-solid border-black bg-white transition left-0 absolute p-3 m-3 -translate-y-16 focus:translate-y-0 z-50"
