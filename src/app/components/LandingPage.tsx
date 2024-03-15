@@ -2,26 +2,28 @@ import imageCleaning from "@/images/cleaningLot.jpg";
 import imageGunCrimes from "@/images/graphic-guncrimes.png";
 import imageResearch from "@/images/graphic-research.png";
 import imageGreened from "@/images/greenedLot.jpg";
+import imageDirty from "@/images/dirtyLot.jpg";
 import imageStep1 from "@/images/landing-step-1.png";
 import imageStep2 from "@/images/landing-step-2.png";
 import imageStep3 from "@/images/landing-step-3.png";
 import { ArrowDownIcon } from "@heroicons/react/20/solid";
-import { Button, Image, Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { ArrowRight, Binoculars, Key, Tree } from "@phosphor-icons/react";
 import { InfoGraphicSection } from "./InfoGraphicSection";
 import { NumberedIconCard } from "./NumberedIconCard";
+import Image, { StaticImageData } from "next/image";
 
 const images = [
   {
-    src: "/dirtyLot.jpg",
+    data: imageDirty,
     alt: "Dirty lot in Philadelphia",
   },
   {
-    src: "/cleaningLot.jpg",
+    data: imageCleaning,
     alt: "Cleaning lot in Philadelphia",
   },
   {
-    src: "/greenedLot.jpg",
+    data: imageGreened,
     alt: "Greened lot in Philadelphia",
   },
 ];
@@ -50,18 +52,23 @@ const LandingPage = () => (
       </div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
-      {images.map(({ src, alt }, index) => (
-        <Image
-          key={src}
-          src={src}
-          alt={alt}
-          width="100%"
-          height="auto"
-          className={`rounded-[8px] aspect-video md:aspect-auto object-cover object-center ${
-            // only show the middle image on mobile
-            !(index % 2) && "hidden md:block"
-          }`}
-        />
+      {images.map(({ data, alt }, index) => (
+        <div className="relative w-full bg-green-10">
+          <Image
+            key={data.src}
+            src={data}
+            alt={alt}
+            sizes="(max-width: 768px) 288px,
+                  (max-width: 1200px) 304px,
+                  390px"
+            priority
+            quality={100}
+            className={`rounded-[8px] aspect-video md:aspect-auto object-cover object-center ${
+              // only show the middle image on mobile
+              !(index % 2) && "hidden md:block"
+            }`}
+          />
+        </div>
       ))}
     </div>
 
