@@ -3,9 +3,12 @@ import {
   ModalContent,
   ModalBody,
   useDisclosure,
-  Image,
   Tooltip,
 } from "@nextui-org/react";
+import Image from "next/image";
+import imageChart from "@/images/graphic-guncrimes.png";
+import imageArticle from "@/images/main_article_summary.png";
+import imageLots from "@/images/transformed_lots.png";
 
 export default function AboutPage() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -36,7 +39,7 @@ export default function AboutPage() {
           </p>
           <div className="mt-1 flex items-center justify-center">
             <Image
-              src="/annual_guncrimes_plot.png"
+              src={imageChart}
               alt="A graph of gun crimes in Philadelphia since 2013"
               height={500}
             />
@@ -81,7 +84,7 @@ export default function AboutPage() {
               offset={-150}
             >
               <Image
-                src="/main_article_summary.png"
+                src={imageArticle}
                 alt="Excerpts from research on reducing gun violence with vacant lot interventions"
                 width={300}
                 onClick={onOpen} // using the onOpen function from useDisclosure
@@ -100,7 +103,7 @@ export default function AboutPage() {
                   {" "}
                   {/* Centering content in the modal */}
                   <Image
-                    src="/main_article_summary.png"
+                    src={imageArticle}
                     alt="Excerpts from research on reducing gun violence with vacant lot interventions"
                     className="max-w-full h-auto" // Responsive width, maintain aspect ratio
                     width={600}
@@ -120,7 +123,7 @@ export default function AboutPage() {
           </p>
           <div className="mt-4 flex items-center justify-center">
             <Image
-              src="/transformed_lots.png"
+              src={imageLots}
               alt="Examples of transformed lots"
               width={600}
               height={400}
