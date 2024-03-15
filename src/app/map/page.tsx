@@ -1,21 +1,19 @@
 "use client";
 
-import { FC, useState } from "react";
-import { NextUIProvider } from "@nextui-org/react";
 import { FilterProvider } from "@/context/FilterContext";
+import { NextUIProvider } from "@nextui-org/react";
+import { X } from "@phosphor-icons/react";
+import { MapboxGeoJSONFeature } from "mapbox-gl";
+import { FC, useState } from "react";
 import {
-  Header,
-  PropertyMap,
+  FilterView,
   PropertyDetailSection,
+  PropertyMap,
   SidePanel,
   SidePanelControlBar,
-  FilterView,
 } from "../../components";
-import Hotjar from "../../components/Hotjar";
-import { MapboxGeoJSONFeature } from "mapbox-gl";
 import StreetView from "../../components/StreetView";
 import { Coordinates } from "../types";
-import { X } from "@phosphor-icons/react";
 
 export type BarClickOptions = "filter" | "download" | "detail" | "list";
 
@@ -36,18 +34,8 @@ const Page: FC = () => {
   return (
     <FilterProvider>
       <NextUIProvider>
-        <title>Map - Clean and Green Philly</title>
         <div className="flex flex-col h-screen">
-          <a
-            className="font-bold border-solid border-black bg-white transition left-0 absolute p-3 m-3 -translate-y-16 focus:translate-y-0 z-50"
-            href="#main"
-            tabIndex={0}
-          >
-            Skip to main content
-          </a>
-          <Header />
-
-          <main className="flex flex-grow overflow-hidden" id="main">
+          <div className="flex flex-grow overflow-hidden">
             {isStreetViewModalOpen && coordinates && (
               <div
                 id="street-view-overlay"
@@ -128,8 +116,7 @@ const Page: FC = () => {
                 </>
               )}
             </SidePanel>
-          </main>
-          <Hotjar />
+          </div>
         </div>
       </NextUIProvider>
     </FilterProvider>
